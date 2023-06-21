@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Dados gerais</title>
+{% endblock %}
+   
+{% block container %}
+
+    <div class="header"><span>{{tarefa.tarefa}} - {{tarefa.prazo}}</span></div>
+
+    <form action="{% url 'update' tarefa.id %}" method="POST">
+        {% csrf_token %}
+
+        <label for="tarefa">Tarefa</label>
+        <input type="text" name="tarefa" value="{{tarefa.tarefa}}">
+
+        <label for="prazo">Prazo</label>
+        <input type="date" name="prazo" value="{{tarefa.prazo}}" required>
+
+        <button class="btnsalvar" type="submit">Atualizar tarefa</button>
+
+    </form>
+
+{% endblock %}

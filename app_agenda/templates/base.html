@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/general.css' %}">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <title>{% block title%}
+
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <div class="logo_name">MINHA AGENDA</div>
+            <i class='bx bx-menu' id="btn" ></i>
+        </div>
+        <ul class="nav-list">
+          <li>
+            <a href="{% url 'home' %}">
+              <i class='bx bx-grid-alt'></i>
+              <span class="links_name">Página inicial</span>
+            </a>
+            <span class="tooltip">Página inicial</span>
+          </li>
+          <li>
+          <a href="{% url 'meusdados' %}">
+            <i class='bx bx-user' ></i>
+            <span class="links_name">Meus Dados</span>
+          </a>
+          <span class="tooltip">Meus Dados</span>
+          </li>
+          
+        </ul>
+    </div>
+
+    <div class="container">
+    
+    {% block container%}  
+
+    {% endblock %}
+
+      </div>
+      {% block js%}
+
+      {% endblock %}
+      <script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>

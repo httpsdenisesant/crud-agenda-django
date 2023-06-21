@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+    <title>Minha agenda</title>
+{% endblock %}
+   
+{% block container %}
+    <div class="divTable">
+        <div class="header">
+            <span>Crie uma tarefa</span>
+        </div>
+        <form action="{% url 'salvar' %}" method="POST">
+            {% csrf_token %}
+            <label for="tarefa">Tarefa</label>
+            <input type="text" name="tarefa" required>
+            <label for="prazo">Prazo</label>
+            <input type="date" name="prazo" required>
+            <button class="btnsalvar" type="submit">Adicionar tarefa</button>
+        </form>
+        <div class="header">
+            <span>Agendados</span>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tarefa</th>
+                    <th>Prazo</th>
+                    <th class="acao">Editar</th>
+                    <th class="acao">Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tarefa in tarefas %}
+                <tr>
+                    <td>{{tarefa.tarefa}}</td>
+                    <td>{{tarefa.prazo}}</td>
+                    <td> <a href="{% url 'editar' tarefa.id %}">editar</a></td>
+                    <td> <a href="{% url 'excluir' tarefa.id %}">excluir</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock%}
+    
